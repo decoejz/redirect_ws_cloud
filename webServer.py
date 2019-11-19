@@ -5,8 +5,8 @@ import os
 
 app = Flask(__name__)
 
-ip_saida = "3.16.19.117"#os.environ["IP_REDIRECT"]
-running_port = 8080#os.environ["R_PORT"]
+ip_saida = os.environ["IP_REDIRECT"]
+running_port = os.environ["R_PORT"]
 
 @app.route('/', defaults={'path': ''}, methods=['GET', 'POST', 'PUT', 'DELETE'])
 @app.route('/<path:path>', methods=['GET', 'POST', 'PUT', 'DELETE'])
@@ -35,4 +35,4 @@ def hc():
 
 
 if __name__ == '__main__':
-    app.run('localhost',port=running_port,debug=True)
+    app.run('localhost',port=running_port)
