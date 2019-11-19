@@ -1,5 +1,6 @@
 #!flask/bin/python
 from flask import Flask, redirect, url_for,request, jsonify
+import json
 import requests
 import os
 
@@ -27,7 +28,8 @@ def catch_all(path):
     
     elif request.method == 'GET':
         req = requests.get('http://' + ip_saida + ':' + str(running_port) + '/' + path)
-        return req.content,req.status_code
+        answer = json.loads(req.content.decode('utf-8'))
+        return jsonify(answer),req.status_code
 
 @app.route('/healthcheck')
 def hc():
