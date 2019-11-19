@@ -37,4 +37,4 @@ def hc():
 
 
 if __name__ == '__main__':
-    app.run('localhost',port=running_port)
+    app.run('0.0.0.0',port=running_port)
